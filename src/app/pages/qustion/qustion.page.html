@@ -1,13 +1,18 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>Qustion</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="qustion-list">Back</ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Qustion</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    <ion-item>
+      <ion-label position="fixed">Fragen-ID: {{question.id}}</ion-label>
+      <ion-label position="fixed"></ion-label>
+    </ion-item>
+  </ion-list>
+  
 </ion-content>
