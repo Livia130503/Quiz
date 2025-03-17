@@ -1,16 +1,20 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Quiz } from './Quiz';
 import { Question } from './question';
 import { v4 as uuidv4 } from 'uuid';
+import { Preferences } from '@capacitor/preferences';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+
+  private http: HttpClient = inject(HttpClient);
   public currentQuiz: Quiz = {id: '', quizName: 'newQuiz', questions: []};
 
   constructor() {
-    this.currentQuiz.questions.push({
+    /*this.currentQuiz.questions.push({
       id: '1',
       title: 'What is the capital of France?',
       a1: 'Paris',
@@ -18,10 +22,59 @@ export class DataService {
       a3: 'Berlin',
       a4: 'Madrid',
       correct: 1
-      })
+      })*/
+     this.loadQuizFormJSON();
+     //this.loadQuiz();
+     console.log("Hallo3");
    }
 
-   public getNewQuestions(): Question {
+  loadQuizFormJSON() {
+    this.http.get('https://www.schmiedl.co.at/json_cors/data.json').subscribe((data) => {
+      if(data){
+        this.currentQuiz = data as Quiz;
+      } else {
+        console.log("Error loading data.json");
+      }
+    });
+  }
+
+  public async loadQuiz() {
+    try {
+      let q = await Preferences.get({key: 'Livia_Quiz'});
+      console.log("Hallo1");
+      if(q.value) {
+        this.currentQuiz = JSON.parse(q.value) as Quiz;
+        console.log(q.value);
+      }
+    } catch(e) {
+      console.log("Error: " + e);
+    }
+      console.log("Hallo2");
+  }
+
+  /* Alte Variante
+  public loadQuiz() {
+    let returnPromise = Preferences.get({key: 'Livia_Quiz'});
+    returnPromise.then((q) => {
+      console.log("Hallo1");
+      if(q.value) {
+        this.currentQuiz = JSON.parse(q.value) as Quiz;
+      }
+    }).catch((e) => {
+      console.log("Error: " + e);
+    console.log("Hallo2");
+    });
+  }
+  */
+
+  public saveQuiz() {
+    Preferences.set({
+      key: 'Livia_Quiz', 
+      value: JSON.stringify(this.currentQuiz)
+    });
+  }
+
+  public getNewQuestions(): Question {
     return {
       id: '0',
       title: '',
@@ -42,11 +95,12 @@ export class DataService {
       q.id = uuidv4();
     }
     this.currentQuiz.questions.push(q);
-
+    this.saveQuiz();
   }
 
   public deleteQuestion(q: Question) {
     this.currentQuiz.questions = this.currentQuiz.questions.filter(qq => qq.id !== q.id);
+    this.saveQuiz();
   }
 }
 

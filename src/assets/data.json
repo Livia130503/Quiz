@@ -1,0 +1,24 @@
+{
+    "id": "InitialQuiz",
+    "quizName": "Städtequiz",
+    "questions": [
+        {
+            "id": "1",
+            "title": "Welche Stadt ist die Hauptstadt von Deutschland?",
+            "a1": "Berlin",
+            "a2": "Hamburg",
+            "a3": "München",
+            "a4": "Köln",
+            "correct": 1
+        },
+        {
+            "id": "2",
+            "title": "Welche Stadt ist die Hauptstadt von Frankreich?",
+            "a1": "Marceille",
+            "a2": "Paris",
+            "a3": "Lyons",
+            "a4": "Nizza",
+            "correct": 2
+        }
+    ]
+}
