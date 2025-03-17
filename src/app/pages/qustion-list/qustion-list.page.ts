@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonBackButton, IonButton, IonIcon, IonItem, IonList, IonLabel, IonItemSliding, IonItemOption, IonItemOptions } from '@ionic/angular/standalone';
 import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
+import { Question } from 'src/app/services/question';
 
 @Component({
   selector: 'app-qustion-list',
@@ -27,8 +28,8 @@ export class QustionListPage implements OnInit {
     this.router.navigate(['/qustion', qid]);
     }
 
-  delete(arg0: string) {
-    //this.data.deletQustion(qid);
+  delete(q: Question) {
+    this.data.deleteQuestion(q);
 
   }
 
