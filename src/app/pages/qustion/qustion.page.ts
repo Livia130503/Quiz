@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons, IonList, IonItem, IonLabel, IonTextarea, IonInput } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons, IonList, IonItem, IonLabel, IonTextarea, IonInput, IonButton, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
 import { DataService } from 'src/app/services/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { Question } from 'src/app/services/question';
@@ -11,7 +11,7 @@ import { Question } from 'src/app/services/question';
   templateUrl: './qustion.page.html',
   styleUrls: ['./qustion.page.scss'],
   standalone: true,
-  imports: [IonInput, IonTextarea, IonLabel, IonItem, IonList, IonButtons, IonBackButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonIcon, IonButton, IonInput, IonTextarea, IonLabel, IonItem, IonList, IonButtons, IonBackButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class QustionPage implements OnInit {
 

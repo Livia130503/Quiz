@@ -19,6 +19,80 @@
             "a3": "Lyons",
             "a4": "Nizza",
             "correct": 2
+        },
+        {
+            "id": "3",
+            "title": "Welche Stadt ist die Hauptstadt von Österreich?",
+            "a1": "Wien",
+            "a2": "St. Pölten",
+            "a3": "Salzburg",
+            "a4": "Innsbruck",
+            "correct": 1
+        },
+        {
+            "id": "4",
+            "title": "Welche Stadt ist die Hauptstadt von Spanien?",
+            "a1": "Barcelona",
+            "a2": "Madrid",
+            "a3": "Valencia",
+            "a4": "Sevilla",
+            "correct": 2
+        },
+        {
+            "id": "5",
+            "title": "Welche Stadt ist die Hauptstadt von Italien?",
+            "a1": "Mailand",
+            "a2": "Turin",
+            "a3": "Neapel",
+            "a4": "Rom",
+            "correct": 4
+        },
+        {
+            "id": "6",
+            "title": "Welche Stadt ist die Hauptstadt von England?",
+            "a1": "Liverpool",
+            "a2": "Manchester",
+            "a3": "London",
+            "a4": "Birmingham",
+            "correct": 3
+        },
+        {
+            "id": "7",
+            "title": "Welche Stadt ist die Hauptstadt von Belgien?",
+            "a1": "Antwerpen",
+            "a2": "Brüssel",
+            "a3": "Gent",
+            "a4": "Lüttich",
+            "correct": 2
+        },
+        {
+            "id": "8",
+            "title": "Welche Stadt ist die Hauptstadt von der Schweiz?",
+            "a1": "Zürich",
+            "a2": "Bern",
+            "a3": "Genf",
+            "a4": "Basel",
+            "correct": 2
+        },
+        {
+            "id": "9",
+            "title": "Welche Stadt ist die Hauptstadt von der USA?",
+            "a1": "Washington D.C.",
+            "a2": "New York",
+            "a3": "Los Angeles",
+            "a4": "Chicago",
+            "correct": 1
+        },
+        {
+            "id": "10",
+            "title": "Welche Stadt ist die Hauptstadt von Kanada?",
+            "a1": "Toronto",
+            "a2": "Vancouver",
+            "a3": "Montreal",
+            "a4": "Ottawa",
+            "correct": 4
         }
+
+
     ]
 }

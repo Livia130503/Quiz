@@ -6,7 +6,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <p>Anzahl der Fragen: {{data.currentQuiz.questions.length}}</p>
-  <ion-button shape="round" color="primary" expand="block" fill="outline" (click)="showList()">Frage erstellen</ion-button>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="home-content">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Quiz Informationen</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Anzahl der Fragen: {{data.currentQuiz.questions.length}}</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-button shape="round" color="primary" expand="block" fill="outline" (click)="showList()">Frage erstellen</ion-button>
+    <ion-button shape="round" color="primary" expand="block" fill="solid" (click)="startQuiz()">Quiz starten</ion-button>
+  </div>
 </ion-content>
+
+

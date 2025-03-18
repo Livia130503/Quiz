@@ -12,6 +12,9 @@ export class DataService {
 
   private http: HttpClient = inject(HttpClient);
   public currentQuiz: Quiz = {id: '', quizName: 'newQuiz', questions: []};
+  private shuffledQuestions: Question[] = [];
+  private currentQuestionIndex: number = 0;
+  private correctAnswersCount: number = 0;
 
   constructor() {
     /*this.currentQuiz.questions.push({
@@ -23,13 +26,24 @@ export class DataService {
       a4: 'Madrid',
       correct: 1
       })*/
-     this.loadQuizFormJSON();
-     //this.loadQuiz();
+     //this.loadQuizFormJSON();
+     //this.loadQuizFormMyJSON();
+     this.loadQuiz();
      console.log("Hallo3");
    }
 
   loadQuizFormJSON() {
     this.http.get('https://www.schmiedl.co.at/json_cors/data.json').subscribe((data) => {
+      if(data){
+        this.currentQuiz = data as Quiz;
+      } else {
+        console.log("Error loading data.json");
+      }
+    });
+  }
+
+  loadQuizFormMyJSON() {
+    this.http.get('./assets/data.json').subscribe((data) => {
       if(data){
         this.currentQuiz = data as Quiz;
       } else {
@@ -102,5 +116,30 @@ export class DataService {
     this.currentQuiz.questions = this.currentQuiz.questions.filter(qq => qq.id !== q.id);
     this.saveQuiz();
   }
-}
 
+  public shuffleQuestions() {
+    this.shuffledQuestions = [...this.currentQuiz.questions];
+    for (let i = this.shuffledQuestions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [this.shuffledQuestions[i], this.shuffledQuestions[j]] = [this.shuffledQuestions[j], this.shuffledQuestions[i]];
+    }
+    this.currentQuestionIndex = 0;
+    this.correctAnswersCount = 0;
+  }
+
+  public getNextQuestion(): Question | null {
+    if (this.currentQuestionIndex < this.shuffledQuestions.length) {
+      return this.shuffledQuestions[this.currentQuestionIndex++];
+    } else {
+      return null;
+    }
+  }
+
+  public incrementCorrectAnswers() {
+    this.correctAnswersCount++;
+  }
+
+  public getCorrectAnswersCount(): number {
+    return this.correctAnswersCount;
+  }
+}
