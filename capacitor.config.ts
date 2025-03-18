@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'at.ac.livia.quiz2025',
   appName: 'Quiz',
   webDir: 'www'
 };
